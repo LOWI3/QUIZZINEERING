@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+            
+      body{
+        background-image:url(https://i.makeagif.com/media/4-24-2017/xzMHOc.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+
+      }
+      
+    </style>
+
+  
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> Quiz - Play</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="game.css" />
+
+    <style>
+      #timer {
+          font-size: 40px;
+          font-weight: bold;
+      }
+  </style>
+
+
+  </head>
+  <body>
+    <div id="timer">Time Remaining: <span id="countdown"></span></div>
+<!-- Button to manually reset the quiz -->
+<script>
+  
+  const timerDuration = 1800; 
+  let timerInterval; 
+  
+ 
+  const countdownElement = document.getElementById('countdown');
+  
+  
+  function startTimer(duration, display) {
+      let timer = duration, minutes, seconds;
+      timerInterval = setInterval(function () {
+          minutes = Math.floor(timer / 60);
+          seconds = timer % 60;
+  
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+          seconds = seconds < 10 ? '0' + seconds : seconds;
+  
+          display.textContent = minutes + ':' + seconds;
+  
+          if (--timer < 0) {
+              timer = duration;
+              
+              clearInterval(timerInterval); 
+              resetQuiz(); 
+          }
+      }, 1000);
+  }
+  
+  
+  function resetQuiz() {
+    alert('Time is up! Quiz will be reset.');
+      location.reload();
+  }
+  
+  window.onload = function () {
+      startTimer(timerDuration, countdownElement);
+  };
+  </script>
+  
+
+     
+    
+    <div class="container ">
+     
+     
+      <div id="game" class="justify-center flex-column">
+       
+        <div id="hud">
+          <div id="hud-item">
+            
+              
+            
+            <p id="progressText" class="hud-prefix">
+              Question
+            </p>
+            
+            <div id="progressBar">
+              <div id="progressBarFull"></div>
+            </div>
+          </div>
+          <div id="hud-item">
+            
+            <p class="hud-prefix">
+              Score 
+            </p>
+            
+            <h1 class="hud-main-text" id="score">
+              0
+            </h1>
+          
+       
+            
+            
+          </div>
+        </div>
+     
+        <style>
+
+          .container{
+                        border:solid black;
+                        border-top: 0.2%;
+                        border-width:50px;
+                        
+                         border-image:url(borrder.png);
+                         border-image-slice:40;
+                       }
+              </style>
+        
+
+      
+        <h2 id="question">What is the answer to this questions?</h2>
+        <div class="choice-container">
+          <p class="choice-prefix">A</p>
+          <p class="choice-text" data-number="1">Choice 1</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">B</p>
+          <p class="choice-text" data-number="2">Choice 2</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">C</p>
+          <p class="choice-text" data-number="3">Choice 3</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">D</p>
+          <p class="choice-text" data-number="4">Choice 4</p>
+        </div>
+      </div>
+    </div>
+  
+    <script src="game.js"></script>
+  </body>
+</html>
